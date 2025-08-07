@@ -32,12 +32,12 @@ abstract class Expr {
     }
 
     static class Unary extends Expr {
-        Unary(Token operator, expr right) {
+        Unary(Token operator, Expr right) {
             this.operator = operator;
             this.right = right;
         }
 
         final Token operator;
-        final expr right;
+        final Expr right;
     }
 }
