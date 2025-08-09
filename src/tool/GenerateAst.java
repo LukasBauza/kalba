@@ -42,7 +42,7 @@ public class GenerateAst {
         }
 
         writer.println();
-        writer.println("    abstract <R> accept(Visitor<R> visitor);");
+        writer.println("    abstract <R> R accept(Visitor<R> visitor);");
 
         writer.println("}");
         writer.close();
@@ -53,10 +53,10 @@ public class GenerateAst {
 
         for (String type : types) {
             String typeName = type.split(":")[0].trim();
-            writer.println("    R visit" + typeName + "(" + baseName + ");");
+            writer.println("    R visit" + typeName + baseName + "(" + typeName + " " + baseName.toUpperCase() + ");");
         }
 
-        writer.println("}");
+        writer.println("    }");
     }
 
     private static void defineType(PrintWriter writer, String baseName, String className, String fieldList) {
